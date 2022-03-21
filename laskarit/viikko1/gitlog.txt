@@ -1,0 +1,20 @@
+commit 36d0b0ab9964952759b0176d8eababf3fee8c610
+Author: Aarni <aarni.miikkulainen@helsinki.fi>
+Date:   Mon Mar 21 17:24:12 2022 +0200
+
+    joo
+
+ tiedostoja/file2.txt                 | 0
+ tiedostoja/{file1.txt => file22.txt} | 0
+ 2 files changed, 0 insertions(+), 0 deletions(-)
+
+commit 195429972339c3f727c4cfe68cb36ce4d0fa368d
+Author: Aarni <aarni.miikkulainen@helsinki.fi>
+Date:   Mon Mar 21 17:22:39 2022 +0200
+
+    tiedostoja luotu
+
+ tiedostoja/file1.txt | 0
+ tiedostoja/file2.txt | 0
+ tiedostoja/file3.txt | 0
+ 3 files changed, 0 insertions(+), 0 deletions(-)
