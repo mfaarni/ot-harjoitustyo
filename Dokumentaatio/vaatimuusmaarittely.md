@@ -10,11 +10,12 @@
 ### Pelaaminen
 #### Peliä pystyy heti ohjelman avattua päästä pelaamaan ensin paikallistallennuksen ja sitten tasovalikon kautta. Peli toimii tyypillisen yksinkertaisen tasohyppelyn tavoin. 
 
-### Paikallistallennus
+## Paikallistallennus
 #### Pelissä pystyy pelaamaan (3:a ?) eri peli-instanssia, joihin tallettuu pelaajan tiedot.
 
 ## Jatkokehitysideoita
-#### Ajan salliessa voidaan lisätä esim seuraavia ominaisuuksia:
+### Ajan salliessa voidaan lisätä esim seuraavia ominaisuuksia:
+
 #### - Pelikenttien määrän lisäys
 #### - Pelin kenttien monipuolisuuden kehittäminen
 #### - Useat eri pelihahmot tai kosmetiikat, joita voi ostaa pelirahalla
