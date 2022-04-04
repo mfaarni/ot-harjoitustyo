@@ -1,0 +1,18 @@
+[[package]]
+name = "invoke"
+version = "1.7.0"
+description = "Pythonic task execution"
+category = "main"
+optional = false
+python-versions = "*"
+
+[metadata]
+lock-version = "1.1"
+python-versions = "^3.8"
+content-hash = "cc54696b69b10fba4c3d57b969fd5f0cb5a2236157f1103dd681debaf93c1e24"
+
+[metadata.files]
+invoke = [
+    {file = "invoke-1.7.0-py3-none-any.whl", hash = "sha256:a5159fc63dba6ca2a87a1e33d282b99cea69711b03c64a35bb4e1c53c6c4afa0"},
+    {file = "invoke-1.7.0.tar.gz", hash = "sha256:e332e49de40463f2016315f51df42313855772be86435686156bc18f45b5cc6c"},
+]
