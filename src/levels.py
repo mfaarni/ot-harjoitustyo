@@ -62,17 +62,26 @@ class Level:
                     player_sprite = Player((x,y))
                     self.player.add(player_sprite)
 
+        player=self.player.sprite
+        jump_bar_sprite=Jump_bar((player.jump_meter))
+        jump_bar_bottom_sprite=Jump_bar_bottom()
+        self.jump_bar.add(jump_bar_bottom_sprite)
+        self.jump_bar.add(jump_bar_sprite)
+
     #Päivitetään pelinäkymää jatkuvasti piirtämällä näytölle muutokset
     def draw(self):
         player = self.player.sprite
         #tason "palikat" liikkuvat liikkeen mukana
         self.tiles.update(self.world_shift)
         #päivitetään hyppy-palkki
-        self.jump_bar.update()
+
+        # !!!!!!Hyppy-palkki ei toimi optimoinnin jälkeen!!!!
         self.jump_timer(player)
 
 
         self.tiles.draw(self.display_surface)
+        self.jump_bar.update(player.jump_meter)
+        #print(player.jump_meter)
         self.jump_bar.draw(self.display_surface)
         self.player.update()
         self.player.draw(self.display_surface)
@@ -83,10 +92,6 @@ class Level:
         self.vertical_movement_collision()
         self.scroll_x()
 
-        jump_bar_sprite=Jump_bar((player.jump_meter))
-        jump_bar_bottom_sprite=Jump_bar_bottom()
-        self.jump_bar.add(jump_bar_bottom_sprite)
-        self.jump_bar.add(jump_bar_sprite)
 
 
 
