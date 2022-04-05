@@ -1,5 +1,5 @@
 # Tasohyppelypeli
-### Proketina on tetuttaa pygamen avulla tasohyppelypeli.
+#### Proketina on tetuttaa pygamen avulla tasohyppelypeli.
 
 ## Dokumentaatio
 #### [Vaatimuusmäärittely](https://github.com/mfaarni/ot-harjoitustyo/blob/master/Dokumentaatio/vaatimuusmaarittely.md)
