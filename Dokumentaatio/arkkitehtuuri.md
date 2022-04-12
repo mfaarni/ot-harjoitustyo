@@ -3,14 +3,16 @@ classDiagram
   Game--|>Vihollinen
   Game--|>Levels
   Game--|>Settings
-  Levels--|>Monster
-  Levels--|>Player
-  Levels--|>Settings
-  Levels--|>Tiles
-  Levels--|>Controls
+  Level--|>Monster
+  Level--|>Player
+  Level--|>Settings
+  Level--|>Tile
+  Level--|>PodiumTile
+  Level--|>Coins
+  Level--|>Controls
   Player--|>Controls
 
-  class Levels{
+  class Level{
     scroll_x()
     setup_level()
     draw()
