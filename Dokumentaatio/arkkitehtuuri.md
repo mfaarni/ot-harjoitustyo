@@ -1,11 +1,9 @@
 ```mermaid
 classDiagram
-  Game--|>Vihollinen
-  Game--|>Levels
+  Game--|>Level
   Game--|>Settings
   Level--|>Monster
   Level--|>Player
-  Level--|>Settings
   Level--|>Tile
   Level--|>PodiumTile
   Level--|>Coins
@@ -64,7 +62,7 @@ classDiagram
   }
   
 
-  class settings{
+  class Settings{
     draw_timer()
 
   }
