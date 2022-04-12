@@ -20,12 +20,12 @@
 poetry run invoke start
 ```
 
-**Ohjelman testien ajaminen:**
+**Ohjelman testaus:**
 ```bash
 poetry run invoke test
 ```
 
-**Testikattavuusraportti:**
+**Testikattavuus:**
 ``` bash
 poetry run invoke coverage-report
 ```
