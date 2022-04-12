@@ -14,9 +14,8 @@ while True:
             pygame.quit()  # pylint: disable=no-member
             sys.exit()
     if not level.level_won:
-        screen.fill((2, 55, 95)) 
+        screen.fill((2, 55, 95))
         draw_timer(screen, level.start_time)
     level.draw()
     pygame.display.update()
     clock.tick(60)
- 
