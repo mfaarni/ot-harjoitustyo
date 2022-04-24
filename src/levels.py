@@ -68,7 +68,7 @@ class Level:
         self.coin_counter = 0
         self.start_time = time()
 
-        # JOTAIN TÄNNEPÄIN ETTÄ LATAUS EI MEE VITUIKS
+        # tuhotaan vanhat spritet kuollessa, jotta alustaessa taso uudelleen ei jää vanhoja elementtejä kummittelemaan
         for sprite in self.sprites:
             for i in sprite:
                 i.kill()

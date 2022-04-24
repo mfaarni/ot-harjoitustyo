@@ -57,7 +57,6 @@ class Player(pygame.sprite.Sprite):
         if self.controls.jump_count == 0:
             self.direction.y = self.controls.jump_control()
             self.controls.jump_count += 1
-
     # Päivittää näppäimistön painalluksia,  !!!!!!!!!HUOM ehkä turha!!!!!!!!!!
 
     def update(self):

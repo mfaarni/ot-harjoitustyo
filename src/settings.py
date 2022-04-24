@@ -2,16 +2,16 @@ import time
 import pygame
 pygame.init()
 level_map = [
-    "                 M                                 ",
-    "               XXXXXX         C                    ",
-    "          XX                 XX      XXX           ",
-    "                                                   ",
-    "                      CC                           ",
-    "              M CCC    CC                          ",
-    "        CCC  XXXXXXXX  M  CCXXX     CCC         W  ",
-    "        XXX    XXXX    XXXXXX       XXX C    CCXX  ",
-    "  P  XXXXXX      XX    XXXX        XXXX X    XXXXX ",
-    "XXXXXXXXXXX    XXXXXX   XXX    XXXXXXXXXXX XXXXXXXX",
+    "                 M                                                                                                                  ",
+    "               XXXXXX         C                                                                                                     ",
+    "          XX                 XX      XXX                                                                                        W   ",
+    "                                                                                XXXXXXXXX   XXXXXXXXXXXXXXXXXXXXXXXX    XXXXXXXXXXXX",
+    "                      CC                                                      XXXXX            XXXXXXXXXXXXXXXX             XXXXXXXX",
+    "              M CCC    CC                                                 XXXXXXXXXXXX      XXXXXXXXXXXXXXXXXXX           XXXXXXXXXX",
+    "        CCC  XXXXXXXX  M  CCXXX     CCC                           XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+    "        XXX    XXXX    XXXXXX       XXX C    CCXX          XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX         XXXXXXXXXXXXXXXXXXXXXXXXXX",
+    "  P  XXXXXX      XX    XXXX        XXXX X    XXXXX XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX M       XXXXXXXXXXXXXXXXXXXXXXXXXX",
+    "XXXXXXXXXXX    XXXXXX   XXX    XXXXXXXXXXX XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
 ]
 
 TILE_SIZE = 64
