@@ -23,7 +23,7 @@ class Level:
         self.coin_counter = 0
 
         # Pelin Score
-        self.score=100000
+        self.score = 100000
 
         # voiton värihommat
         self.colour_win = 0
@@ -32,7 +32,7 @@ class Level:
 
         self.start_time = time()
 
-        self.highscore=Scores()
+        self.highscore = Scores()
 
         self.controls = Controls()
 
@@ -71,7 +71,7 @@ class Level:
 
     # Tason luonti
     def setup_level(self, level_map):
-        self.score-=5000
+        self.score -= 5000
         # kolikot ja aika alkuarvoihin
         self.coin_counter = 0
         self.start_time = time()
@@ -99,7 +99,7 @@ class Level:
                     self.player.add(player_sprite)
                 # M=monster eli hirviö
                 if column == "M":
-                    x = column_index * TILE_SIZE # pylint: disable=invalid-name
+                    x = column_index * TILE_SIZE  # pylint: disable=invalid-name
                     y = row_index * TILE_SIZE    # pylint: disable=invalid-name
                     monster_sprite = Monster((x, y-15))
                     self.monsters.add(monster_sprite)
@@ -145,7 +145,7 @@ class Level:
             self.fall_to_death()
             self.scroll_x()
             self.draw_coin_counter()
-            self.score-=1
+            self.score -= 1
         self.win()
 
     def horizontal_movement_collision(self):
@@ -205,31 +205,32 @@ class Level:
     def win(self):
         if self.level_won:
             self.highscore.save_score(self.score+self.coin_counter)
-            self.highscore.print_highscores()
             font = pygame.font.Font("freesansbold.ttf", 125)
-            score_font=pygame.font.Font("freesansbold.ttf", 25)
+            score_font = pygame.font.Font("freesansbold.ttf", 25)
 
             if self.colour_win < 240:
                 self.colour_win += 2
             self.colour_x += 8
             self.colour_y += 8
-            #if self.colour_x < 1500:
+            # if self.colour_x < 1500:
             #    pygame.draw.rect(self.display_surface, (self.colour_win, self.colour_win, 255),
             #    (-550+self.colour_x, -500+self.colour_x, 800+self.colour_y, 800+self.colour_y))
 
             win_text = font.render("YOU WON!", True, (100, 200, 14))
             win_text_shadow = font.render("YOU WON!", True, (80, 170, 70))
-            scores=self.highscore.return_highscores()
-            spacing=0
-            nmbr=0
-            self.display_surface.fill((150,150,150))
-            pygame.draw.rect(self.display_surface,(100,20,120),(450,130,300,1000))
-            self.display_surface.blit((score_font.render("HIGHSCORES", True, (255,255,255))),(500,150))
+            scores = self.highscore.return_highscores()
+            spacing = 0
+            nmbr = 0
+            self.display_surface.fill((150, 150, 150))
+            pygame.draw.rect(self.display_surface,
+                             (100, 20, 120), (450, 130, 300, 1000))
+            self.display_surface.blit(
+                (score_font.render("HIGHSCORES", True, (255, 255, 255))), (500, 150))
             for score in scores:
-                spacing+=40
-                nmbr+=1
-                score_text=score_font.render(str(nmbr) +". "+ score[0]+" : "+score[1], True,(255,255,255))
-                self.display_surface.blit(score_text,(470,180+spacing))
+                spacing += 40
+                nmbr += 1
+                score_text = score_font.render(
+                    str(nmbr) + ". " + score[0]+" : "+score[1], True, (255, 255, 255))
+                self.display_surface.blit(score_text, (465, 180+spacing))
             self.display_surface.blit(win_text_shadow, (245, 35))
             self.display_surface.blit(win_text, (250, 40))
-            

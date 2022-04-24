@@ -1,6 +1,8 @@
 import pygame
 
 # Laattojen sprite
+
+
 class Tile(pygame.sprite.Sprite):
     def __init__(self, pos):
         super().__init__()
@@ -12,7 +14,9 @@ class Tile(pygame.sprite.Sprite):
     def update(self, x_shift):
         self.rect.x += x_shift
 
-    #voitto-kohdan sprite
+    # voitto-kohdan sprite
+
+
 class PodiumTile(pygame.sprite.Sprite):
     def __init__(self, pos, size):
         super().__init__()
@@ -23,7 +27,9 @@ class PodiumTile(pygame.sprite.Sprite):
     def update(self, x_shift):
         self.rect.x += x_shift
 
-    #kolikon sprite
+    # kolikon sprite
+
+
 class Coins(pygame.sprite.Sprite):
     def __init__(self, pos):
         super().__init__()

@@ -11,11 +11,10 @@ class Player(pygame.sprite.Sprite):
             pygame.image.load("src/sprites/rogue.png"), (35, 85))
         self.rect = self.image.get_rect(topleft=pos)
 
-
         # Hahmon suunta
         self.direction = pygame.math.Vector2(
             0, 0)  # pylint: disable=c-extension-no-member
-        self.looking_forward=True
+        self.looking_forward = True
         self.controls = Controls()
 
     # Hahmon ohjaus näppäimistön avulla, vastaanottaa näppäinsyötteen ja
@@ -27,16 +26,16 @@ class Player(pygame.sprite.Sprite):
             self.controls.player_x = 0
 
         elif keys[pygame.K_RIGHT] or keys[pygame.K_d]:
-            if self.controls.player_x==-1 and self.looking_forward:
+            if self.controls.player_x == -1 and self.looking_forward:
                 self.image = pygame.transform.flip(self.image, True, False)
-                self.looking_forward=True
+                self.looking_forward = True
 
             self.controls.player_x = self.controls.keypress("right")
 
         elif keys[pygame.K_LEFT] or keys[pygame.K_a]:
-            if self.controls.player_x==1 and not self.looking_forward:
+            if self.controls.player_x == 1 and not self.looking_forward:
                 self.image = pygame.transform.flip(self.image, True, False)
-                self.looking_forward=False
+                self.looking_forward = False
 
             self.controls.player_x = self.controls.keypress("left")
         else:
