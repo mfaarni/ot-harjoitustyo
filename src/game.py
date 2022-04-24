@@ -19,4 +19,4 @@ def run_game():
         level.draw()
         pygame.display.update()
         clock.tick(60)
-        
+        print(level.score)

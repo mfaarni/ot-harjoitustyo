@@ -20,6 +20,10 @@ class Level:
 
         # lasketaan kolikot
         self.coin_counter = 0
+
+        # Pelin Score
+        self.score=100000
+
         # voiton värihommat
         self.colour_win = 0
         self.colour_x = 0
@@ -64,6 +68,7 @@ class Level:
 
     # Tason luonti
     def setup_level(self, level_map):
+        self.score-=5000
         # kolikot ja aika alkuarvoihin
         self.coin_counter = 0
         self.start_time = time()
@@ -137,6 +142,7 @@ class Level:
             self.fall_to_death()
             self.scroll_x()
             self.draw_coin_counter()
+            self.score-=1
         self.win()
 
     def horizontal_movement_collision(self):
