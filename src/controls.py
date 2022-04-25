@@ -13,8 +13,7 @@ class Controls:
             return 1
         if pressed == "left":
             return -1
-        else:
-            pass
+        return 0
 
     def jump_control(self):
         if self.jump_count == 0:

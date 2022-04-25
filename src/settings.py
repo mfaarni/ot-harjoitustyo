@@ -2,16 +2,16 @@ import time
 import pygame
 pygame.init()
 level_map = [
-    "                 M                                                                                                                  ",
-    "               XXXXXX         C                                                                                                     ",
-    "          XX                 XX      XXX                                                                                        W   ",
-    "                                                                                XXXXXXXXX   XXXXXXXXXXXXXXXXXXXXXXXX    XXXXXXXXXXXX",
-    "                      CC                                                      XXXXX            XXXXXXXXXXXXXXXX             XXXXXXXX",
-    "              M CCC    CC                                                 XXXXXXXXXXXX      XXXXXXXXXXXXXXXXXXX           XXXXXXXXXX",
-    "        CCC  XXXXXXXX  M  CCXXX     CCC                           XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-    "        XXX    XXXX    XXXXXX       XXX C    CCXX          XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX         XXXXXXXXXXXXXXXXXXXXXXXXXX",
-    "  P WXXXXXX      XX    XXXX        XXXX X    XXXXX XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX M       XXXXXXXXXXXXXXXXXXXXXXXXXX",
-    "XXXXXXXXXXX    XXXXXX   XXX    XXXXXXXXXXX XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+    "                 M                                                                                                                  ",  # pylint: disable=line-too-long
+    "               XXXXXX         C                                                                                                     ",  # pylint: disable=line-too-long
+    "          XX                 XX      XXX                                          M              M         M                    W   ",  # pylint: disable=line-too-long
+    "                                                                                XXXXXXXXX   XXXXXXXXXXXXXXXXXXXXXXXX    XXXXXXXXXXXX",  # pylint: disable=line-too-long
+    "                      CC                                                      XXXXX            XXXXXXXXXXXXXXXX             XXXXXXXX",  # pylint: disable=line-too-long
+    "              M CCC    CC                                           M     XXXXXXXXXXXX      XXXXXXXXXXXXXXXXXXX           XXXXXXXXXX",  # pylint: disable=line-too-long
+    "        CCC  XXXXXXXX  M  CC XX     CCC                           XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",  # pylint: disable=line-too-long
+    "        XXX    XXXX    XXXXXXX      XXX C    CCXX          XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX         XXXXXXXXXXXXXXXXXXXXXXXXXX",  # pylint: disable=line-too-long
+    "  P  XXXXXX      XX    XXXXX       XXXX X    XXXXX XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX M       XXXXXXXXXXXXXXXXXXXXXXXXXX",  # pylint: disable=line-too-long
+    "XXXXXXXXXXX    XXXXXX   XXX    XXXXXXXXXXX XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",  # pylint: disable=line-too-long
 ]
 
 TILE_SIZE = 64

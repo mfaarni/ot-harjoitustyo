@@ -1,8 +1,8 @@
+import sys
+from time import sleep
 import pygame
 from settings import SCREEN_HEIGHT, SCREEN_WIDTH
-import sys
 from game import run_game
-from time import sleep
 pygame.init()
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
@@ -25,6 +25,9 @@ text_quit = quit_font.render('QUIT', True, white)
 text_start = start_font.render('START', True, white)
 
 while True:
+    # stores the (x,y) coordinates into
+    # the variable as a tuple
+    mouse = pygame.mouse.get_pos()
 
     for ev in pygame.event.get():
 
@@ -36,26 +39,25 @@ while True:
 
             # if the mouse is clicked on the
             # button the game is terminated
-            if QUIT_BUTTON_WIDTH/2 <= mouse[0] <= QUIT_BUTTON_WIDTH/2+140 and QUIT_BUTTON_HEIGHT/2 <= mouse[1] <= QUIT_BUTTON_HEIGHT/2+40:
+            if QUIT_BUTTON_WIDTH/2 <= mouse[0] <= QUIT_BUTTON_WIDTH/2+140\
+                    and QUIT_BUTTON_HEIGHT/2 <= mouse[1] <= QUIT_BUTTON_HEIGHT/2+40:
                 pygame.quit()
                 sys.exit()
 
-            if START_BUTTON_WIDTH/2-80 <= mouse[0] <= START_BUTTON_WIDTH/2+220 and START_BUTTON_HEIGHT/2-20 <= mouse[1] <= START_BUTTON_HEIGHT/2+80:
-                for i in range(18):
-                    screen.fill((180-i*10, 180-i*10, 180-i*10))
-                    pygame.display.update()
-                    sleep(0.01)
-                run_game()
+            if START_BUTTON_WIDTH/2-80 <= mouse[0] <= START_BUTTON_WIDTH/2+220:
+                if START_BUTTON_HEIGHT/2-20 <= mouse[1] <= START_BUTTON_HEIGHT/2+80:
+                    for i in range(18):
+                        screen.fill((180-i*10, 180-i*10, 180-i*10))
+                        pygame.display.update()
+                        sleep(0.01)
+                    run_game()
     # fills the screen with a color
     screen.fill((180, 230, 180))
 
-    # stores the (x,y) coordinates into
-    # the variable as a tuple
-    mouse = pygame.mouse.get_pos()
-
     # if mouse is hovered on a button it
     # changes to lighter shade
-    if QUIT_BUTTON_WIDTH/2 <= mouse[0] <= QUIT_BUTTON_WIDTH/2+140 and QUIT_BUTTON_HEIGHT/2 <= mouse[1] <= QUIT_BUTTON_HEIGHT/2+40:
+    if QUIT_BUTTON_WIDTH/2 <= mouse[0] <= QUIT_BUTTON_WIDTH/2+140\
+            and QUIT_BUTTON_HEIGHT/2 <= mouse[1] <= QUIT_BUTTON_HEIGHT/2+40:
         pygame.draw.rect(screen, color_light, [
                          QUIT_BUTTON_WIDTH/2, QUIT_BUTTON_HEIGHT/2, 140, 40])
 
@@ -65,7 +67,8 @@ while True:
 
     # if mouse is hovered on a button it
     # changes to lighter shade
-    if START_BUTTON_WIDTH/2-80 <= mouse[0] <= START_BUTTON_WIDTH/2+220 and START_BUTTON_HEIGHT/2-20 <= mouse[1] <= START_BUTTON_HEIGHT/2+80:
+    if START_BUTTON_WIDTH/2-80 <= mouse[0] <= START_BUTTON_WIDTH/2+220\
+            and START_BUTTON_HEIGHT/2-20 <= mouse[1] <= START_BUTTON_HEIGHT/2+80:
         pygame.draw.rect(screen, color_light, [
                          START_BUTTON_WIDTH/2-80, START_BUTTON_HEIGHT/2-25, 300, 100])
 

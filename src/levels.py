@@ -23,7 +23,7 @@ class Level:
         self.coin_counter = 0
 
         # Pelin Score
-        self.score = 100000
+        self.score = 8000
 
         # voiton värihommat
         self.colour_win = 0
@@ -31,9 +31,7 @@ class Level:
         self.colour_y = 0
 
         self.start_time = time()
-
         self.highscore = Scores()
-
         self.controls = Controls()
 
         # Muodostetaan sprite-groupit elementeistä
@@ -71,49 +69,50 @@ class Level:
 
     # Tason luonti
     def setup_level(self, level_map):
-        self.score -= 5000
+        if self.score > 1000:
+            self.score -= 1000
         # kolikot ja aika alkuarvoihin
         self.coin_counter = 0
         self.start_time = time()
-
-        # tuhotaan vanhat spritet kuollessa, jotta alustaessa taso uudelleen ei jää vanhoja elementtejä kummittelemaan
+        # tuhotaan vanhat spritet kuollessa, jotta alustaessa taso uudelleen
+        # ei jää vanhoja elementtejä kummittelemaan
         for sprite in self.sprites:
             for i in sprite:
                 i.kill()
-
         # Käydään asetuksissa määritelty tasokartta-taulukko läpi,
         # ja luodaan sen pohjalta elementit tasoon.
         for row_index, row in enumerate(level_map):
             for column_index, column in enumerate(row):
                 # X=seinä eli tile
                 if column == "X":
-                    x = column_index * TILE_SIZE  # pylint: disable=invalid-name
-                    y = row_index * TILE_SIZE     # pylint: disable=invalid-name
-                    tile = Tile((x, y))
+                    x_coordinate = column_index * TILE_SIZE
+                    y_coordinate = row_index * TILE_SIZE
+                    tile = Tile((x_coordinate, y_coordinate))
                     self.tiles.add(tile)
                 # P=pelaaja
                 if column == "P":
-                    x = column_index * TILE_SIZE  # pylint: disable=invalid-name
-                    y = row_index * TILE_SIZE     # pylint: disable=invalid-name
-                    player_sprite = Player((x, y))
+                    x_coordinate = column_index * TILE_SIZE
+                    y_coordinate = row_index * TILE_SIZE
+                    player_sprite = Player((x_coordinate, y_coordinate))
                     self.player.add(player_sprite)
                 # M=monster eli hirviö
                 if column == "M":
-                    x = column_index * TILE_SIZE  # pylint: disable=invalid-name
-                    y = row_index * TILE_SIZE    # pylint: disable=invalid-name
-                    monster_sprite = Monster((x, y-15))
+                    x_coordinate = column_index * TILE_SIZE
+                    y_coordinate = row_index * TILE_SIZE
+                    monster_sprite = Monster((x_coordinate, y_coordinate-15))
                     self.monsters.add(monster_sprite)
                 # W= win eli voitto
                 if column == "W":
-                    x = column_index * TILE_SIZE    # pylint: disable=invalid-name
-                    y = row_index * TILE_SIZE       # pylint: disable=invalid-name
-                    podium_sprite = PodiumTile((x, y), (TILE_SIZE/1.4))
+                    x_coordinate = column_index * TILE_SIZE
+                    y_coordinate = row_index * TILE_SIZE
+                    podium_sprite = PodiumTile(
+                        (x_coordinate, y_coordinate), (TILE_SIZE/1.4))
                     self.podium.add(podium_sprite)
                 # C = coin eli kolikko
                 if column == "C":
-                    x = column_index * TILE_SIZE    # pylint: disable=invalid-name
-                    y = row_index * TILE_SIZE       # pylint: disable=invalid-name
-                    coin_sprite = Coins((x+22, y+16))
+                    x_coordinate = column_index * TILE_SIZE
+                    y_coordinate = row_index * TILE_SIZE
+                    coin_sprite = Coins((x_coordinate+22, y_coordinate+16))
                     self.coins.add(coin_sprite)
 
     # Päivitetään pelinäkymää jatkuvasti piirtämällä näytölle muutokset
@@ -145,7 +144,8 @@ class Level:
             self.fall_to_death()
             self.scroll_x()
             self.draw_coin_counter()
-            self.score -= 1
+            if self.score > 1:
+                self.score -= 1
         self.win()
 
     def horizontal_movement_collision(self):
@@ -204,17 +204,9 @@ class Level:
 
     def win(self):
         if self.level_won:
-            self.highscore.save_score(self.score+self.coin_counter)
+            self.highscore.save_score(self.score+self.coin_counter*200)
             font = pygame.font.Font("freesansbold.ttf", 125)
             score_font = pygame.font.Font("freesansbold.ttf", 25)
-
-            if self.colour_win < 240:
-                self.colour_win += 2
-            self.colour_x += 8
-            self.colour_y += 8
-            # if self.colour_x < 1500:
-            #    pygame.draw.rect(self.display_surface, (self.colour_win, self.colour_win, 255),
-            #    (-550+self.colour_x, -500+self.colour_x, 800+self.colour_y, 800+self.colour_y))
 
             win_text = font.render("YOU WON!", True, (100, 200, 14))
             win_text_shadow = font.render("YOU WON!", True, (80, 170, 70))
@@ -225,12 +217,16 @@ class Level:
             pygame.draw.rect(self.display_surface,
                              (100, 20, 120), (450, 130, 300, 1000))
             self.display_surface.blit(
-                (score_font.render("HIGHSCORES", True, (255, 255, 255))), (500, 150))
+                (score_font.render("HIGHSCORES", True, (255, 255, 255))), (500, 180))
+            self.display_surface.blit(
+                (score_font.render("Your score: " + str(self.score+self.coin_counter*200)\
+                    , True, (255, 255, 255))), (500, 150))
             for score in scores:
-                spacing += 40
-                nmbr += 1
-                score_text = score_font.render(
-                    str(nmbr) + ". " + score[0]+" : "+score[1], True, (255, 255, 255))
-                self.display_surface.blit(score_text, (465, 180+spacing))
+                if int(float(score[1])) > 0:
+                    spacing += 40
+                    nmbr += 1
+                    score_text = score_font.render(
+                        str(nmbr) + ". " + score[0]+" : "+score[1], True, (255, 255, 255))
+                    self.display_surface.blit(score_text, (465, 180+spacing))
             self.display_surface.blit(win_text_shadow, (245, 35))
             self.display_surface.blit(win_text, (250, 40))

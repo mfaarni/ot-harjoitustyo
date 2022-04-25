@@ -1,28 +1,19 @@
 
- Player score:93507
- Player score:94964
- Player score:94971
- Player score:94983
- Player score:94974
- Player score:77909
-
- Player score:94962
- Player score:94972
- Player score:94968
- Player score:94960
- Player score:94978
- Player score:94951
- Player score:94982
- Player score:94960
- Player score:94971
- Player score:94970
- Player score:94945
- Player score:94954
- Player score:94953
- Player score:94955
- Player score:94956
- Player score:94953
- Player score:94972
- Player score:94927
- Player score:94958
- Player score:94965
+ Player score:7543
+ Player score: 0
+ Player score:7504
+ Player score: 0
+ Player score:4802
+ Player score: 0
+ Player score:8471
+ Player score: 0
+ Player score:7726
+ Player score: 0
+ Player score:7685
+ Player score: 0
+ Player score:8205
+ Player score: 0
+ Player score:4816
+ Player score: 0
+ Player score:6413
+ Player score: 0

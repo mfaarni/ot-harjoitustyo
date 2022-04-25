@@ -9,6 +9,7 @@ python = "^3.8"
 invoke = "^1.7.0"
 pygame = "^2.1.2"
 pytest = "^7.1.1"
+python-dotenv = "^0.20.0"
 
 [tool.poetry.dev-dependencies]
 coverage = "^6.3.2"

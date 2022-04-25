@@ -1,45 +1,42 @@
-
 class Scores:
     def __init__(self):
         self.first_write = True
 
     def save_score(self, score):
-        self.text_file = open("src/highscores.txt", "a")
-        if self.first_write:
-            self.text_file.write("\n Player score:" + str(score))
-            self.first_write = False
-            self.text_file.close()
+        with open("src/highscores.txt", "a", encoding="utf8") as text_file:
+            if self.first_write:
+                text_file.write("\n Player score:" + str(score))
+                text_file.write("\n Player score: 0")
+                self.first_write = False
 
     def print_highscores(self):
-        self.text_file = open("src/highscores.txt", "r")
-        with self.text_file as f:
-            highscores = f.read().splitlines()
+        with open("src/highscores.txt", "r", encoding="utf8") as text_file:
+            highscores = text_file.read().splitlines()
             highscores_list = []
             for i in highscores:
                 highscores_list.append(i.split(":"))
 
-        for i in range(len(highscores_list)):
+        for i in enumerate(highscores_list):
             if len(highscores_list[i]) != 2:
                 highscores_list = highscores_list[:i-1]+highscores_list[i+1:]
-            self.text_file.close()
         highscores_list = highscores_list[1:11]
         highscores_list = sorted(highscores_list, key=lambda x: x[1])
         highscores_list.reverse()
         print(highscores_list)
 
     def return_highscores(self):
-        self.text_file = open("src/highscores.txt", "r")
-        with self.text_file as f:
-            highscores = f.read().splitlines()
+        with open("src/highscores.txt", "r", encoding="utf8") as text_file:
+            highscores = text_file.read().splitlines()
             highscores_list = []
             for i in highscores:
                 highscores_list.append(i.split(":"))
+        highscores_list_updated = []
+        for i in range(len(highscores_list)-1):
+            if len(highscores_list[i]) == 2:
+                highscores_list_updated.append(highscores_list[i])
 
-        for i in range(len(highscores_list)):
-            if len(highscores_list[i]) != 2:
-                highscores_list = highscores_list[:i-1]+highscores_list[i+1:]
-            self.text_file.close()
-        highscores_list = highscores_list[1:11]
+        highscores_list = highscores_list_updated[0:22]
         highscores_list = sorted(highscores_list, key=lambda x: x[1])
         highscores_list.reverse()
-        return (highscores_list)
+        highscores_list = highscores_list[0:11]
+        return highscores_list
