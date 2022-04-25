@@ -17,3 +17,5 @@
  Player score: 0
  Player score:6413
  Player score: 0
+ Player score:7698
+ Player score: 0
