@@ -9,6 +9,9 @@
 |10.4.|3h|Jatkettu ominaisuuksien edistämistä|
 |11.4.|4h|Lisätty esim kolikot, muutettu koodin rakennetta testiystävällisemmäksi|
 |12.4.|4h|Muutettu rakennetta ja hoidettu pieniä ongelmia, lisätty testejä|
-|Yht:|28h| |
+|23.4.|3h|Lisätty peliin aloitusnäyttö|
+|25.4.|6h|Lisätty highscores-lista, joka tallentaa pelipisteet eri pelikerroilta|
+|26.4.|6h|Jaoteltu pelilogiikkaa omaan luokkaan, ja korjattu sen aiheuttamia ongelmia|
+|Yht:|43h| |
 
 
