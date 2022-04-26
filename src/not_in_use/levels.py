@@ -9,6 +9,7 @@ from scores import Scores
 
 
 class Level:
+    #pylint: disable-all
     def __init__(self, level_map, surface):
         # Alustetaan näyttö ja suoritetaan kartalla tason luonti
         self.display_surface = surface
@@ -145,7 +146,7 @@ class Level:
             self.draw_coin_counter()
             if self.score > 1:
                 self.score -= 1
-        
+
         if self.level_won:
             self.win()
 
@@ -215,15 +216,14 @@ class Level:
         nmbr = 0
         self.display_surface.fill((150, 150, 150))
         pygame.draw.rect(self.display_surface,
-                        (100, 20, 120), (450, 130, 300, 1000))
+                         (100, 20, 120), (450, 130, 300, 1000))
         self.display_surface.blit(
             (score_font.render("HIGHSCORES", True, (255, 255, 255))), (500, 180))
         self.display_surface.blit(
-            (score_font.render("Your score: " + str(self.score+self.coin_counter*200+1)\
-                , True, (255, 255, 255))), (500, 150))
+            (score_font.render("Your score: " + str(self.score+self.coin_counter*200+1), True, (255, 255, 255))), (500, 150))
         for score in scores:
             if int(float(score[1])) > 0:
-                if nmbr<10:
+                if nmbr < 10:
                     spacing += 40
                     nmbr += 1
                     score_text = score_font.render(

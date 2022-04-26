@@ -1,9 +1,5 @@
-from time import sleep, time
-import pygame
-from tiles import PodiumTile, Tile, Coins
-from settings import TILE_SIZE, SCREEN_WIDTH
-from player import Player
-from monster import Monster
+from time import time
+from settings import SCREEN_WIDTH
 from controls import Controls
 from scores import Scores
 
@@ -18,19 +14,12 @@ class Level:
 
         # lasketaan kolikot
         self.coin_counter = 0
-        self.death_counter=-1
+        self.death_counter = -1
 
-        # voiton värihommat
-        self.colour_win = 0
-        self.colour_x = 0
-        self.colour_y = 0
 
         self.start_time = time()
         self.highscore = Scores()
         self.controls = Controls()
-        print("!!!!!!!!!!!")
-
-
         self.setup_level()
 
     def scroll_x(self, player_x, direction_x):
@@ -49,8 +38,7 @@ class Level:
 
     # Tason luonti
     def setup_level(self):
-        self.death_counter+=1
-        print(self.death_counter)
+        self.death_counter += 1
         # kolikot ja aika alkuarvoihin
         self.coin_counter = 0
         self.start_time = time()
@@ -62,9 +50,6 @@ class Level:
         if player_y > 1000:
             self.setup_level()
 
-        
-
     def win(self):
-        self.level_won=True
-        print(self.death_counter)
-        self.highscore.save_score(self.coin_counter,self.death_counter)
+        self.level_won = True
+        self.highscore.save_score(self.coin_counter, self.death_counter)

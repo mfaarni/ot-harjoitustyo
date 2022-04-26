@@ -15,3 +15,5 @@
  Player score: 0
  Player score:-3400
  Player score: 0
+ Player score:8000
+ Player score: 0

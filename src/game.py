@@ -2,7 +2,7 @@ import sys
 import pygame
 from settings import SCREEN_HEIGHT, SCREEN_WIDTH, level_map, draw_timer
 from levels_2 import Level
-from levels_2_graphic import Level_graphic
+from levels_2_graphic import LevelGraphic
 
 
 def run_game():
@@ -10,7 +10,7 @@ def run_game():
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     clock = pygame.time.Clock()
     level = Level()
-    level_graphic = Level_graphic(level_map, screen)
+    level_graphic = LevelGraphic(level_map, screen)
 
     while True:
         for event in pygame.event.get():
