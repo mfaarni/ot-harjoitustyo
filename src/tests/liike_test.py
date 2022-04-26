@@ -1,8 +1,6 @@
 import unittest
-from player import Player
-from levels import Level
 from controls import Controls
-from settings import SCREEN_HEIGHT, SCREEN_WIDTH, level_map
+from settings import SCREEN_HEIGHT, SCREEN_WIDTH
 
 
 class TestMoving(unittest.TestCase):

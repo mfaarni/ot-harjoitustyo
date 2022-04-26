@@ -2,15 +2,15 @@ import time
 import pygame
 pygame.init()
 level_map = [
-    "                 M                                                                                                                  ",  # pylint: disable=line-too-long
-    "               XXXXXX         C                                                                                                     ",  # pylint: disable=line-too-long
-    "          XX                 XX      XXX                                          M              M         M                    W   ",  # pylint: disable=line-too-long
-    "                                                                                XXXXXXXXX   XXXXXXXXXXXXXXXXXXXXXXXX    XXXXXXXXXXXX",  # pylint: disable=line-too-long
-    "                      CC                                                      XXXXX            XXXXXXXXXXXXXXXX             XXXXXXXX",  # pylint: disable=line-too-long
-    "              M CCC    CC                                           M     XXXXXXXXXXXX      XXXXXXXXXXXXXXXXXXX           XXXXXXXXXX",  # pylint: disable=line-too-long
-    "        CCC  XXXXXXXX  M  CC XX     CCC                           XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",  # pylint: disable=line-too-long
-    "        XXX    XXXX    XXXXXXX      XXX C    CCXX          XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX         XXXXXXXXXXXXXXXXXXXXXXXXXX",  # pylint: disable=line-too-long
-    "  P  XXXXXX      XX    XXXXX       XXXX X    XXXXX XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX M       XXXXXXXXXXXXXXXXXXXXXXXXXX",  # pylint: disable=line-too-long
+    "                 M                                                                                XX      XX                        ",  # pylint: disable=line-too-long
+    "               XXXXXXXXX      C                                                                  X                                  ",  # pylint: disable=line-too-long
+    "          XX                 XXXXXXXXXXX                                          MC C           MCCCCCCC  M                    W   ",  # pylint: disable=line-too-long
+    "                                XXXXX                                           XXXXXXXXX   XXXXXXXXXXXXXXXXXXXXXXXX    XXXXXXXXXXXX",  # pylint: disable=line-too-long
+    "                      CC                                                      XXXXXCCCCCCCCCCCCXXXXXXXXXXXXXXXX             XXXXXXXX",  # pylint: disable=line-too-long
+    "              M CCC    CC                                           M C   XXXXXXXXXCCCCCCCCCCCCXXXXXXXXXXXXXXXX  C  C  C  XXXXXXXXXX",  # pylint: disable=line-too-long
+    "        CCC  XXXXXXXX  M  CC XX     CCC                     C C C XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",  # pylint: disable=line-too-long
+    "        XXX    XXXX    XXXXXXX      XXX C    CCXX    CCCCC XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX         XXXXXXXXXXXXXXXXXXXXXXXXXX",  # pylint: disable=line-too-long
+    "  P WXXXXXX      XX    XXXXX       XXXX X    XXXXX XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX M       XXXXXXXXXXXXXXXXXXXXXXXXXX",  # pylint: disable=line-too-long
     "XXXXXXXXXXX    XXXXXX   XXX    XXXXXXXXXXX XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",  # pylint: disable=line-too-long
 ]
 

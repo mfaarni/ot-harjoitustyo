@@ -1,37 +1,17 @@
 from time import sleep, time
 import pygame
 from tiles import PodiumTile, Tile, Coins
-from settings import TILE_SIZE, SCREEN_WIDTH
+from settings import TILE_SIZE
 from player import Player
 from monster import Monster
-from controls import Controls
-from scores import Scores
+from levels_2 import Level
 
-
-class Level:
+class Level_graphic:
     def __init__(self, level_map, surface):
-        # Alustetaan näyttö ja suoritetaan kartalla tason luonti
         self.display_surface = surface
-        self.level_map = level_map
-        # aluksi kamera pysyy paikallaan
-        self.world_shift = 0
-        # funktio totetuttaa ikään kuin kameran liikkumisen hahmon mukana,
-        # todellisuudessa liikkuu tason elementit hahmon ollessa paikallaan.
-        self.level_won = False
+        self.level_map=level_map
+        self.level_logic=Level()
 
-        # lasketaan kolikot
-        self.coin_counter = 0
-        # Pelin Score
-        self.score = 8000
-
-        # voiton värihommat
-        self.colour_win = 0
-        self.colour_x = 0
-        self.colour_y = 0
-
-        self.start_time = time()
-        self.highscore = Scores()
-        self.controls = Controls()
 
         # Muodostetaan sprite-groupit elementeistä
         self.tiles = pygame.sprite.Group()
@@ -47,32 +27,13 @@ class Level:
         self.sprites.append(self.podium)
         self.sprites.append(self.coins)
 
-        self.setup_level(level_map)
+        self.setup_graphic()
+        self.win_time=int(time())
+        self.time_write=False
 
-    def scroll_x(self):
-        player = self.player.sprite
-        player_x = player.rect.centerx
-        direction_x = player.direction.x
 
-        # Liike tapahtuu hahmon sijainnin ja suunnan mukaan
-        if player_x < (SCREEN_WIDTH/2-400) and direction_x < 0:
-            self.world_shift = 6
-            self.controls.speed = 0
-
-        elif player_x > (SCREEN_WIDTH/2+200) and direction_x > 0:
-            self.world_shift = -6
-            self.controls.speed = 0
-        else:
-            self.world_shift = 0
-            self.controls.speed = 6
-
-    # Tason luonti
-    def setup_level(self, level_map):
-        if self.score > 1000:
-            self.score -= 1000
-        # kolikot ja aika alkuarvoihin
-        self.coin_counter = 0
-        self.start_time = time()
+    
+    def setup_graphic(self):
         # tuhotaan vanhat spritet kuollessa, jotta alustaessa taso uudelleen
         # ei jää vanhoja elementtejä kummittelemaan
         for sprite in self.sprites:
@@ -80,7 +41,7 @@ class Level:
                 i.kill()
         # Käydään asetuksissa määritelty tasokartta-taulukko läpi,
         # ja luodaan sen pohjalta elementit tasoon.
-        for row_index, row in enumerate(level_map):
+        for row_index, row in enumerate(self.level_map):
             for column_index, column in enumerate(row):
                 # X=seinä eli tile
                 if column == "X":
@@ -113,45 +74,43 @@ class Level:
                     y_coordinate = row_index * TILE_SIZE
                     coin_sprite = Coins((x_coordinate+15, y_coordinate+16))
                     self.coins.add(coin_sprite)
-
-    # Päivitetään pelinäkymää jatkuvasti piirtämällä näytölle muutokset
-    def draw(self):
-        # päivitetään hyppy-palkki
-        # !!!!!!Hyppy-palkki ei toimi optimoinnin jälkeen!!!!
-        if not self.level_won:
+    
+    def draw_graphic(self):
+        
+        if not self.level_logic.level_won:
             # tason "palikat" liikkuvat liikkeen mukana
-            self.tiles.update(self.world_shift)
+            self.tiles.update(self.level_logic.world_shift)
             self.tiles.draw(self.display_surface)
             # piirretään tasoon voittopaikka
-            self.podium.update(self.world_shift)
+            self.podium.update(self.level_logic.world_shift)
             self.podium.draw(self.display_surface)
             # piirretään tasoon hirviöt
-            self.monsters.update(self.world_shift)
+            self.monsters.update(self.level_logic.world_shift)
             self.monsters.draw(self.display_surface)
             # piirretään tasoon hyppypalkki
             # HUOM EI TOIMI ATM
 
             # piirretään tasoon kolikot
-            self.coins.update(self.world_shift)
+            self.coins.update(self.level_logic.world_shift)
             self.coins.draw(self.display_surface)
             # piirretään tasoon hahmo
             self.player.update()
             self.player.draw(self.display_surface)
+        
             # tarkistetaan osumat ja muut olennaiset
             self.horizontal_movement_collision()
             self.vertical_movement_collision()
-            self.fall_to_death()
-            self.scroll_x()
+            self.fall_to_death_graphic()
+            self.level_logic.scroll_x(self.player.sprite.rect.centerx,\
+                self.player.sprite.direction.x)
             self.draw_coin_counter()
-            if self.score > 1:
-                self.score -= 1
-        
-        if self.level_won:
-            self.win()
+        else:
+            self.win_graphic()
+
 
     def horizontal_movement_collision(self):
-        player = self.player.sprite
-        player.rect.x += player.direction.x * self.controls.speed
+        player=self.player.sprite
+        player.rect.x += player.direction.x * self.level_logic.controls.speed
         # kentän laatat
         for sprite in self.tiles.sprites():
             if sprite.rect.colliderect(player.rect):
@@ -161,16 +120,18 @@ class Level:
                     player.rect.right = sprite.rect.left
         # Podium
             if self.podium.sprite.rect.colliderect(player.rect):
-                self.win()
+                self.level_logic.win()
+                self.win_graphic()
         # hirviöt
         for sprite in self.monsters.sprites():
             if sprite.rect.colliderect(player.rect):
-                self.setup_level(self.level_map)
+                self.level_logic.setup_level()
+                self.setup_graphic()
                 sleep(0.5)
         # kolikot
         for coin_sprite in self.coins.sprites():
             if coin_sprite.rect.colliderect(player.rect):
-                self.coin_counter += 1
+                self.level_logic.coin_counter += 1
                 coin_sprite.kill()
 
     def vertical_movement_collision(self):
@@ -191,26 +152,33 @@ class Level:
                     player.direction.y = 0
         # Podium
         if self.podium.sprite.rect.colliderect(player.rect):
-            self.level_won = True
+            self.level_logic.level_won = True
+            self.level_logic.win()
+            self.win_graphic()
 
-    def fall_to_death(self):
-        if self.player.sprite.rect.y > 1000:
-            self.setup_level(self.level_map)
 
     def draw_coin_counter(self):
         coin_font = pygame.font.Font("freesansbold.ttf", 40)
-        coin_str = "coins: "+str(self.coin_counter)
+        coin_str = "coins: "+str(self.level_logic.coin_counter)
         coin_text = coin_font.render(coin_str, True, (255, 255, 255))
         self.display_surface.blit(coin_text, (150, 50))
+    
+    def fall_to_death_graphic(self):
+        if self.player.sprite.rect.y>1000:
+            self.level_logic.fall_to_death(self.player.sprite.rect.y)
+            self.setup_graphic()
 
-    def win(self):
-        self.highscore.save_score(self.score+self.coin_counter*200)
+
+    def win_graphic(self):
         font = pygame.font.Font("freesansbold.ttf", 125)
         score_font = pygame.font.Font("freesansbold.ttf", 25)
 
         win_text = font.render("YOU WON!", True, (100, 200, 14))
         win_text_shadow = font.render("YOU WON!", True, (80, 170, 70))
-        scores = self.highscore.return_highscores()
+        scores = self.level_logic.highscore.return_highscores()
+        if not self.time_write:
+            self.win_time=int(time() - self.level_logic.highscore.start_time)
+            self.time_write=True
         spacing = 0
         nmbr = 0
         self.display_surface.fill((150, 150, 150))
@@ -219,7 +187,7 @@ class Level:
         self.display_surface.blit(
             (score_font.render("HIGHSCORES", True, (255, 255, 255))), (500, 180))
         self.display_surface.blit(
-            (score_font.render("Your score: " + str(self.score+self.coin_counter*200+1)\
+            (score_font.render("Your score: " + str(self.level_logic.highscore.score-self.win_time*100+self.level_logic.coin_counter*100-1000*self.level_logic.death_counter)\
                 , True, (255, 255, 255))), (500, 150))
         for score in scores:
             if int(float(score[1])) > 0:

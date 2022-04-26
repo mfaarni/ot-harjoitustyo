@@ -3,6 +3,7 @@ from time import sleep
 import pygame
 from settings import SCREEN_HEIGHT, SCREEN_WIDTH
 from game import run_game
+
 pygame.init()
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
