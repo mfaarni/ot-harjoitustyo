@@ -17,3 +17,8 @@
   - pelissä mahdollisuus kuolla tippumalla alas
 - grafiikoita päivitetty, nyt käytössä valmisgrafiikat, jotka päivitetään omiin myöhemmin
 - Hyppypalkki poistettu turhana
+## Viikko 5
+###
+- peliin lisätty aloitusmenu, josta peli aloitetaan
+- peliin lisätty pisteytys, joka tallentuu tekstitiedostoon
+- pelin loppuun päästäessä näytölle tulostuu highscores-lista, jossa näkyy pelikertojen pisteet parhausjärjestyksessä. 
