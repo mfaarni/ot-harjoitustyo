@@ -12,6 +12,8 @@
 |23.4.|3h|Lisätty peliin aloitusnäyttö|
 |25.4.|6h|Lisätty highscores-lista, joka tallentaa pelipisteet eri pelikerroilta|
 |26.4.|6h|Jaoteltu pelilogiikkaa omaan luokkaan, ja korjattu sen aiheuttamia ongelmia|
-|Yht:|43h| |
+|2.5.|8h|Highscores-lista muutettu sql-tietokantaan, ja se toimii nyt moitteetta|
+|3.5.|5h|Koodia opitmoitu ja korjattu pylint-virheitä|
+|Yht:|56h| |
 
 
