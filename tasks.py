@@ -8,6 +8,9 @@ from invoke import task
 def start(ctx):
 	ctx.run("python3 src/menu.py", pty=True)
 	
+def build(ctx):
+	ctx.run("python3 src/initialize_database.py", pty=True)
+	
 @task
 def test(ctx):
 	ctx.run("pytest src --ignore src/test_main_game.py", pty=True)
