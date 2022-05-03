@@ -22,3 +22,10 @@
 - peliin lisätty aloitusmenu, josta peli aloitetaan
 - peliin lisätty pisteytys, joka tallentuu tekstitiedostoon
 - pelin loppuun päästäessä näytölle tulostuu highscores-lista, jossa näkyy pelikertojen pisteet parhausjärjestyksessä. 
+
+## Viikko 6
+###
+- pelin aloitusmenuun lisätty nimikenttä, johon pelaaja voi antaa itselleen sopivan nimen
+- kenttä ilmoittaa ongelmista ja hyväksyy vain sopivan nimen
+- pelin pisteiden talletus tapahtuu nyt sql-tietokantaan, ja pisteet tallentuvat nimen mukaan
+- korjattu muutama virhe, jossa kentässä liikkuminen on aiheuttanut ongelmia
