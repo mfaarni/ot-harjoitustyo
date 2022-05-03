@@ -1,5 +1,6 @@
 # Tasohyppelypeli
 #### Proketina on pygamen avulla toteutettu tasohyppelypeli.
+#### Pelissä voi nimetä itsensä, jonka jälkeen peli alkaa ja kentällä voi liikkua keräten kolikoita ja väistellen esteitä ja vihollisia. Pelin lopussa näkee omat pisteensä sekä tietokannassa olevien pelaajien huippupisteet
 
 ## Release
 #### [Viimeisin release:](https://github.com/mfaarni/ot-harjoitustyo/releases/tag/viikko5)
@@ -13,7 +14,10 @@
 
 1. Asenna riippuvuudet seuraavalla komennolla:
 ```poetry install```
-2. Käynnistä sovellus:
+2. Suorita alustustoimenpiteet komennolla: 
+ ```poetry run invoke build```
+HUOM! Tämä poistaa kaikki pistetulokset, joten suositellaan vain ensimmäisellä kerralla tai testauksen vaatiessa
+4. Käynnistä sovellus:
 ```poetry run invoke start```
 
 ## Komentorivitoiminnot
