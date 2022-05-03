@@ -5,7 +5,7 @@ from settings import SCREEN_WIDTH
 
 class Test_levels(unittest.TestCase):
     def setUp(self):
-        self.level = Level()
+        self.level = Level("testi")
 
     def test_scroll_x_left(self):
         self.level.scroll_x(-100, -1)

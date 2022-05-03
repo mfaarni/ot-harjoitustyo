@@ -5,12 +5,17 @@ from levels_2 import Level
 from levels_2_graphic import LevelGraphic
 
 
-def run_game():
+def run_game(player_name):
+    """Pyörittää varsinaista peliä
+
+    Args:
+        player_name (string): pelaajan nimi, joka tallennetaan sql-databaseen
+    """
     pygame.init()
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     clock = pygame.time.Clock()
-    level = Level()
-    level_graphic = LevelGraphic(level_map, screen)
+    level = Level(player_name)
+    level_graphic = LevelGraphic(level_map, screen, player_name)
 
     while True:
         for event in pygame.event.get():

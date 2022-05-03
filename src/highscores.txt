@@ -17,3 +17,45 @@
  Player score: 0
  Player score:8000
  Player score: 0
+ Player score:7900
+ Player score: 0
+ Player score:10400
+ Player score: 0
+ Player score:7100
+ Player score: 0
+ Player score:4000
+ Player score: 0
+ Player score:8100
+ Player score: 0
+ Player score:8000
+ Player score: 0
+ Player score:8000
+ Player score: 0
+ Player score:7000
+ Player score: 0
+ Player score:8100
+ Player score: 0
+ Player score:8100
+ Player score: 0
+ Player score:8000
+ Player score: 0
+ Player score:8100
+ Player score: 0
+ Player score:7900
+ Player score: 0
+ Player score:7900
+ Player score: 0
+ Player score:7900
+ Player score: 0
+ Player score:-800
+ Player score: 0
+ Player score:9500
+ Player score: 0
+ Player score:7400
+ Player score: 0
+ Player score:10200
+ Player score: 0
+ Player score:9800
+ Player score: 0
+ Player score:8000
+ Player score: 0

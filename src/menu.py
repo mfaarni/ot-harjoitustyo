@@ -2,11 +2,11 @@ import sys
 from time import sleep
 import pygame
 from settings import SCREEN_HEIGHT, SCREEN_WIDTH
-from game import run_game
+from login_menu import Login
 
 pygame.init()
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-
+login=Login()
 white = (255, 255, 255)
 color_light = (170, 170, 170)
 color_dark = (100, 100, 100)
@@ -51,7 +51,8 @@ while True:
                         screen.fill((180-i*10, 180-i*10, 180-i*10))
                         pygame.display.update()
                         sleep(0.01)
-                    run_game()
+                        login.run_login()
+                    #run_login()
     # fills the screen with a color
     screen.fill((180, 230, 180))
 
