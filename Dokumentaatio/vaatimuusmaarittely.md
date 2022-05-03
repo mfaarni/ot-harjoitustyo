@@ -2,7 +2,7 @@
 
 ## Sovelluksen tarkoitus
 #### Sovellus on yksinkertainen tasohyypelypeli, joka toteutetaan pygamen avulla. (tehty)
-#### Pelissä on pisteytys, joka tallentuu käyttäjänimen avulla (tehty osittain)
+#### Pelissä on pisteytys, joka tallentuu käyttäjänimen avulla (tehty)
 #### Pelissä on eri tasoja.
 
 ## Käyttäjät
@@ -17,7 +17,7 @@
 #### Pelissä on pisteytys, joka määräytyy ajasta, kolikoista sekä kuolemista. (tehty)
 
 ## Paikallistallennus
-#### Pisteytys tallentuu paikalliseen tiedostoon, ja se luetaan ja järjestellään lopussa näkyvää listaa varten (tehty)
+#### Pisteytys tallentuu paikalliseen tietokantaan, ja se luetaan ja järjestellään lopussa näkyvää listaa varten (tehty)
 #### Pelissä pystyy pelaamaan (3:a ?) eri peli-instanssia, joihin tallettuu pelaajan tiedot.
 
 ## Jatkokehitysideoita
