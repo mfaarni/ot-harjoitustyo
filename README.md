@@ -3,7 +3,7 @@
 #### Pelissä voi nimetä itsensä, jonka jälkeen peli alkaa ja kentällä voi liikkua keräten kolikoita ja väistellen esteitä ja vihollisia. Pelin lopussa näkee omat pisteensä sekä tietokannassa olevien pelaajien huippupisteet
 
 ## Release
-#### [Viimeisin release:](https://github.com/mfaarni/ot-harjoitustyo/releases/tag/viikko5)
+#### [Viimeisin release:](https://github.com/mfaarni/ot-harjoitustyo/releases/tag/viikko6)
 ## Dokumentaatio
 #### [Vaatimuusmäärittely](https://github.com/mfaarni/ot-harjoitustyo/blob/master/Dokumentaatio/vaatimuusmaarittely.md)
 #### [Työaikakirjanpito](https://github.com/mfaarni/ot-harjoitustyo/blob/master/Dokumentaatio/Ty%C3%B6aikakirjanpito.md)
