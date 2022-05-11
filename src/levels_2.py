@@ -23,6 +23,8 @@ class Level:
         self.controls = Controls()
         self.setup_level()
         self.name=player_name
+        self.health=3
+        self.inincibility_timer=0
 
     def scroll_x(self, player_x, direction_x):
         """vastaa pelihahmon liikkumisesta, jolloin ruudun sivuilla ollessa hahmo ei liiku,
@@ -43,14 +45,20 @@ class Level:
         else:
             self.world_shift = 0
             self.controls.speed = 6
+        if self.inincibility_timer>0:
+            self.inincibility_timer-=1
 
     def setup_level(self):
         """alustaa tason pelin alussa sekä kuoltaessa, asettamalla arvot oletuksiksi
         """
         self.death_counter += 1
         self.coin_counter = 0
+        self.health=3
         self.start_time = time()
 
+    def get_hit(self,amount):
+        self.health+=amount
+        self.inincibility_timer=50
     def fall_to_death(self, player_y):
         """vastaa tilanteesta, jossa pelaaja tippuu tason ulkopuolelle
 

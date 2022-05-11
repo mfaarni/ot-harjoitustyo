@@ -24,7 +24,7 @@ def run_game(player_name):
                 sys.exit()
         if not level.level_won:
             screen.fill((2, 55, 95))
-            draw_timer(screen, level.start_time)
         level_graphic.draw_graphic()
+        draw_timer(screen, level.start_time)
         pygame.display.update()
         clock.tick(60)

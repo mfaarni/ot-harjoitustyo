@@ -96,7 +96,6 @@ class Login():
             pygame.quit()
 
         if event.type == pygame.MOUSEBUTTONDOWN:
-
             if START_BUTTON_WIDTH/2-80 <= mouse[0] <= START_BUTTON_WIDTH/2+220:
                 if START_BUTTON_HEIGHT/2-20 <= mouse[1] <= START_BUTTON_HEIGHT/2+80:
                     self.acceptable_name()
@@ -106,10 +105,10 @@ class Login():
         if self.name_acceptable:
             if self.user_repository.find_by_username(self.name) is None:
                 self.user_repository.create(self.name,0)
-                for i in range(18):
-                    screen.fill((180-i*10, 180-i*10, 180-i*10))
-                    pygame.display.update()
-                    sleep(0.01)
+            for i in range(18):
+                screen.fill((180-i*10, 180-i*10, 180-i*10))
+                pygame.display.update()
+                sleep(0.01)
                 run_game(self.name)
         else:
             self.text_error=self.error_font.render\

@@ -61,3 +61,93 @@
  Player score: 0
  Player score:8400
  Player score: 0
+ Player score:10200
+ Player score: 0
+ Player score:8300
+ Player score: 0
+ Player score:7900
+ Player score: 0
+ Player score:8000
+ Player score: 0
+ Player score:7900
+ Player score: 0
+ Player score:7800
+ Player score: 0
+ Player score:7900
+ Player score: 0
+ Player score:8000
+ Player score: 0
+ Player score:7900
+ Player score: 0
+ Player score:8000
+ Player score: 0
+ Player score:7900
+ Player score: 0
+ Player score:7900
+ Player score: 0
+ Player score:7900
+ Player score: 0
+ Player score:7700
+ Player score: 0
+ Player score:7900
+ Player score: 0
+ Player score:7900
+ Player score: 0
+ Player score:8000
+ Player score: 0
+ Player score:8000
+ Player score: 0
+ Player score:8000
+ Player score: 0
+ Player score:7900
+ Player score: 0
+ Player score:7900
+ Player score: 0
+ Player score:7900
+ Player score: 0
+ Player score:7900
+ Player score: 0
+ Player score:7800
+ Player score: 0
+ Player score:7800
+ Player score: 0
+ Player score:7900
+ Player score: 0
+ Player score:8000
+ Player score: 0
+ Player score:7900
+ Player score: 0
+ Player score:7900
+ Player score: 0
+ Player score:7900
+ Player score: 0
+ Player score:7900
+ Player score: 0
+ Player score:7900
+ Player score: 0
+ Player score:7900
+ Player score: 0
+ Player score:7900
+ Player score: 0
+ Player score:7900
+ Player score: 0
+ Player score:8000
+ Player score: 0
+ Player score:8000
+ Player score: 0
+ Player score:7800
+ Player score: 0
+ Player score:6700
+ Player score: 0
+ Player score:7900
+ Player score: 0
+ Player score:-800
+ Player score: 0
+ Player score:7600
+ Player score: 0
+ Player score:7800
+ Player score: 0
+ Player score:7900
+ Player score: 0
+ Player score:7900
+ Player score: 0

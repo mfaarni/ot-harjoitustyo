@@ -1,7 +1,8 @@
 from time import sleep, time
 import pygame
 from tiles import PodiumTile, Tile, Coins
-from settings import TILE_SIZE
+from settings import TILE_SIZE, heart_image
+from scores import Scores
 from player import Player
 from monster import Monster
 from levels_2 import Level
@@ -79,12 +80,10 @@ class LevelGraphic:
                     y_coordinate = row_index * TILE_SIZE
                     coin_sprite = Coins((x_coordinate+15, y_coordinate+16))
                     self.coins.add(coin_sprite)
-
     def draw_graphic(self):
         """Päivittää tason elementtien sijainnin ja piirtää ne näytölle,
         sekä tarkistaa fysiikat
         """
-
         if not self.level_logic.level_won:
             self.tiles.update(self.level_logic.world_shift)
             self.tiles.draw(self.display_surface)
@@ -103,15 +102,16 @@ class LevelGraphic:
             self.level_logic.scroll_x(self.player.sprite.rect.centerx,
                                       self.player.sprite.direction.x)
             self.draw_coin_counter()
+            self.draw_health()
         else:
             self.win_graphic()
+            self.click()
 
     def horizontal_movement_collision(self):
         """tarkistaa horisontaalisessa suunnassa tapahtuvat törmäykset
         """
         player = self.player.sprite
         player.rect.x += player.direction.x * self.level_logic.controls.speed
-        # kentän laatat
         for sprite in self.tiles.sprites():
             if sprite.rect.colliderect(player.rect):
                 if player.direction.x < 0:
@@ -125,9 +125,12 @@ class LevelGraphic:
         # hirviöt
         for sprite in self.monsters.sprites():
             if sprite.rect.colliderect(player.rect):
-                self.level_logic.setup_level()
-                self.setup_graphic()
-                sleep(0.5)
+                if self.level_logic.inincibility_timer==0:
+                    self.level_logic.get_hit(-1)
+                if self.level_logic.health<1:
+                    self.level_logic.setup_level()
+                    self.setup_graphic()
+                    sleep(0.5)
         # kolikot
         for coin_sprite in self.coins.sprites():
             if coin_sprite.rect.colliderect(player.rect):
@@ -152,7 +155,7 @@ class LevelGraphic:
 
                     player.rect.top = sprite.rect.bottom
                     player.direction.y = 0
-        # Podium
+
         if self.podium.sprite.rect.colliderect(player.rect):
             self.level_logic.level_won = True
             self.level_logic.win()
@@ -165,6 +168,12 @@ class LevelGraphic:
         coin_str = "coins: "+str(self.level_logic.coin_counter)
         coin_text = coin_font.render(coin_str, True, (255, 255, 255))
         self.display_surface.blit(coin_text, (150, 50))
+    
+    def draw_health(self):
+        spacing=0
+        for i in range(self.level_logic.health):
+            self.display_surface.blit(heart_image,(100+spacing,150))
+            spacing+=50
 
     def fall_to_death_graphic(self):
         """pelaajan pudotessa ulos kentästä alustaa sen alkuasentoon
@@ -178,9 +187,11 @@ class LevelGraphic:
         """
         font = pygame.font.Font("freesansbold.ttf", 125)
         score_font = pygame.font.Font("freesansbold.ttf", 25)
+        start_again_font = pygame.font.Font("freesansbold.ttf", 35)
 
         win_text = font.render("YOU WON!", True, (100, 200, 14))
         win_text_shadow = font.render("YOU WON!", True, (80, 170, 70))
+        start_again_text= start_again_font.render("START AGAIN", True,(255,255,255))
         scores = self.level_logic.highscore.return_highscores()
         if not self.time_write:
             self.win_time = int(time() - self.level_logic.highscore.start_time)
@@ -199,6 +210,21 @@ class LevelGraphic:
 
         self.display_surface.blit(win_text_shadow, (245, 35))
         self.display_surface.blit(win_text, (250, 40))
+        pygame.draw.rect(self.display_surface,(100,20,120),(60,470,300,75))
+        self.display_surface.blit(start_again_text,(90,490))
+
+    def click(self):
+        mouse = pygame.mouse.get_pos()
+        for event in pygame.event.get():
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if 60 <= mouse[0] <= 360:
+                    if 470 <= mouse[1] <= 545:
+                        self.level_logic.level_won=False
+                        self.level_logic.death_counter = -1
+                        self.level_logic.start_time=time()
+                        self.level_logic.highscore=Scores()
+                        self.setup_graphic()
+                        self.level_logic.setup_level()
 
 
     def draw_scores(self, scores, score_font):
