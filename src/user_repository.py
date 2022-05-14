@@ -1,7 +1,8 @@
 from database_connection import get_database_connection
 
+
 def get_user_by_row(row):
-    return (row["username"],row["score"]) if row else None
+    return (row["username"], row["score"]) if row else None
 
 
 class UserRepository:
@@ -67,12 +68,11 @@ class UserRepository:
 
         self._connection.commit()
 
-        return username,score
+        return username, score
 
     def update_score(self, username, score):
 
-
-        cursor=self._connection.cursor()
+        cursor = self._connection.cursor()
 
         cursor.execute(
             "select * from users where username = ?",
@@ -80,13 +80,14 @@ class UserRepository:
         )
         row = cursor.fetchone()
 
-        if (get_user_by_row(row)[1])<score:
+        if (get_user_by_row(row)[1]) < score:
 
             cursor.execute(
                 "update users set score=? where username=?",
-                (score,username)
+                (score, username)
             )
             self._connection.commit()
+
     def delete_all(self):
         """Poistaa kaikki käyttäjät.
         """
@@ -98,4 +99,4 @@ class UserRepository:
         self._connection.commit()
 
 
-user_repository = UserRepository(get_database_connection())
+USER_REPOSITORY = UserRepository(get_database_connection())

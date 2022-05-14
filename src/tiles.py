@@ -1,14 +1,25 @@
 import pygame
-from settings import tile_image
-# Laattojen sprite
+from settings import TILE_IMAGE, BACKTILE_IMAGE
 
 class Tile(pygame.sprite.Sprite):
     def __init__(self, pos):
         super().__init__()
-        self.image = tile_image
+        self.image = TILE_IMAGE
         self.rect = self.image.get_rect(topleft=pos)
+
     def update(self, x_shift):
         self.rect.x += x_shift
+
+
+class Backtile(pygame.sprite.Sprite):
+    def __init__(self, pos):
+        super().__init__()
+        self.image = BACKTILE_IMAGE
+        self.rect = self.image.get_rect(topleft=pos)
+
+    def update(self, x_shift):
+        self.rect.x += x_shift
+
 
 class PodiumTile(pygame.sprite.Sprite):
     def __init__(self, pos, size):
@@ -31,3 +42,14 @@ class Coins(pygame.sprite.Sprite):
 
     def update(self, x_shift):
         self.rect.x += x_shift
+
+
+class Background(pygame.sprite.Sprite):
+    def __init__(self, pos):
+        super().__init__()
+
+        self.image = pygame.image.load("src/sprites/background.png")
+        self.rect = self.image.get_rect(topleft=pos)
+
+    def update(self, x_shift):
+        self.rect.x += x_shift/1.8

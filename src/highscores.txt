@@ -151,3 +151,25 @@
  Player score: 0
  Player score:7900
  Player score: 0
+ Player score:11000
+ Player score: 0
+ Player score:10900
+ Player score: 0
+ Player score:3500
+ Player score: 0
+ Player score:11000
+ Player score: 0
+ Player score:11900
+ Player score: 0
+ Player score:11000
+ Player score: 0
+ Player score:10900
+ Player score: 0
+ Player score:10900
+ Player score: 0
+ Player score:11100
+ Player score: 0
+ Player score:10400
+ Player score: 0
+ Player score:10500
+ Player score: 0

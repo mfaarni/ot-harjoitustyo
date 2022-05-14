@@ -9,6 +9,7 @@ class Monster(pygame.sprite.Sprite):
         pygame.sprite.Sprite (pygame.sprite.Sprite): Pygamen spirte, eli
         käytännössä hirviön graafinen kuva
     """
+
     def __init__(self, pos):
         """alustetaan hirviön ulkonäkö ja toiminta
 
