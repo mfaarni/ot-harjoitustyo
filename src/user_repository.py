@@ -99,8 +99,3 @@ class UserRepository:
 
 
 user_repository = UserRepository(get_database_connection())
-
-#print(user_repository.find_by_username("mati"))
-
-#user_repository.update_score("mati",1000)
-#print(user_repository.find_by_username("mati"))
