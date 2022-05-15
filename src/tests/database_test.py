@@ -1,5 +1,5 @@
 import unittest
-from database.initialize_database import drop_tables, create_tables, initialize_database
+from initialize_database import drop_tables, create_tables, initialize_database
 from database.user_repository import UserRepository
 from database.scores import Scores
 from database.database_connection import get_database_connection
@@ -50,6 +50,7 @@ class TestDatabase(unittest.TestCase):
         self.assertEqual(ret,("testi", 123))
         
     def test_save_score(self):
+        self.userRepoReal.delete_by_username("testi_save")
         self.userRepoReal.create("testi_save",123)
         self.test_scores.save_score(1000,0,1000000000000,"testi_save")
         self.assertEqual("testi_save",self.test_scores.return_highscores()[0][0])
