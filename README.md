@@ -3,14 +3,14 @@ Proketina on pygamen avulla toteutettu tasohyppelypeli.
 Pelissä voi nimetä itsensä, jonka jälkeen peli alkaa ja kentällä voi liikkua keräten kolikoita ja väistellen esteitä ja vihollisia. Pelin grafiikat ovat kaikki itse luotuja. Pelin lopussa näkee omat pisteensä sekä tietokannassa olevien pelaajien huippupisteet. 
 
 ## Release
-#### [Viimeisin release:](https://github.com/mfaarni/ot-harjoitustyo/releases/tag/viikko6)
+#### [Viimeisin release](https://github.com/mfaarni/ot-harjoitustyo/releases/tag/viikko6)
 ## Dokumentaatio
-#### [Käyttöohje]((https://github.com/mfaarni/ot-harjoitustyo/blob/master/Dokumentaatio/käyttöhje.md))
+#### [Käyttöohje](https://github.com/mfaarni/ot-harjoitustyo/blob/master/Dokumentaatio/Kayttoohje.md)
 #### [Vaatimuusmäärittely](https://github.com/mfaarni/ot-harjoitustyo/blob/master/Dokumentaatio/vaatimuusmaarittely.md)
 #### [Työaikakirjanpito](https://github.com/mfaarni/ot-harjoitustyo/blob/master/Dokumentaatio/Ty%C3%B6aikakirjanpito.md)
 #### [Changelog](https://github.com/mfaarni/ot-harjoitustyo/blob/master/Dokumentaatio/changelog.md)
 #### [Arkkitehtuuri](https://github.com/mfaarni/ot-harjoitustyo/blob/master/Dokumentaatio/arkkitehtuuri.md)
-#### [Testausdokumentti] (https://github.com/mfaarni/ot-harjoitustyo/blob/master/Dokumentaatio/testausdokumentti.md)
+#### [Testausdokumentti](https://github.com/mfaarni/ot-harjoitustyo/blob/master/Dokumentaatio/Testausdokumentti.md)
 
 ## Asennus
 
