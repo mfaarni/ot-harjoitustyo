@@ -1,4 +1,5 @@
 import pygame
+from services.settings import GOBLIN_IMAGE
 
 
 class Monster(pygame.sprite.Sprite):
@@ -17,8 +18,7 @@ class Monster(pygame.sprite.Sprite):
             pos (int): hirviön sijainti kartalla
         """
         super().__init__()
-        self.image = pygame.transform.scale(
-            pygame.image.load("src/sprites/float_skel_white.png"), (38, 80))
+        self.image = GOBLIN_IMAGE
         self.rect = self.image.get_rect(topleft=pos)
         self.facing_right = True
         self.walk_meter = 0

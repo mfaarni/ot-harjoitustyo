@@ -1,8 +1,8 @@
 import sys
 from time import sleep
 import pygame
-from settings import SCREEN_HEIGHT, SCREEN_WIDTH
-from login_menu import Login
+from services.settings import SCREEN_HEIGHT, SCREEN_WIDTH
+from ui.login_menu import Login
 
 pygame.init()
 SCREEN = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))

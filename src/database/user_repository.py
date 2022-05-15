@@ -1,5 +1,4 @@
-from database_connection import get_database_connection
-
+from database.database_connection import get_database_connection
 
 def get_user_by_row(row):
     return (row["username"], row["score"]) if row else None
@@ -20,7 +19,7 @@ class UserRepository:
     def find_all(self):
         """Palauttaa kaikki käyttäjät.
         Returns:
-            Palauttaa listan User-olioita.
+            listan käyttäjistä
         """
 
         cursor = self._connection.cursor()
@@ -58,45 +57,32 @@ class UserRepository:
         Returns:
             Tallennettu käyttjä User-oliona.
         """
-
         cursor = self._connection.cursor()
-
         cursor.execute(
             "insert into users (username, score) values (?, ?)",
-            (username, score)
-        )
-
+            (username, score))
         self._connection.commit()
-
         return username, score
 
     def update_score(self, username, score):
 
         cursor = self._connection.cursor()
-
         cursor.execute(
             "select * from users where username = ?",
-            (username,)
-        )
+            (username,))
         row = cursor.fetchone()
 
         if (get_user_by_row(row)[1]) < score:
-
             cursor.execute(
                 "update users set score=? where username=?",
-                (score, username)
-            )
+                (score, username))
             self._connection.commit()
 
     def delete_all(self):
         """Poistaa kaikki käyttäjät.
         """
-
         cursor = self._connection.cursor()
-
         cursor.execute("delete from users")
-
         self._connection.commit()
-
 
 USER_REPOSITORY = UserRepository(get_database_connection())

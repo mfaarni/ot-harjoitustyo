@@ -1,7 +1,6 @@
 class Controls:
     def __init__(self):
 
-        # Hahmon arvot
         self.speed = 6
         self.gravity = 0.8
         self.jump_height = -18

@@ -1,9 +1,9 @@
 from time import sleep
 import pygame
 from settings import SCREEN_HEIGHT, SCREEN_WIDTH
-from game import run_game
-from database_connection import get_database_connection
-from user_repository import UserRepository
+from services.game import run_game
+from database.database_connection import get_database_connection
+from database.user_repository import UserRepository
 
 pygame.init()
 SCREEN = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))

@@ -1,6 +1,6 @@
 import pygame
-from controls import Controls
-from settings import PLAYER_IMAGE_LEFT, PLAYER_IMAGE_RIGHT
+from services.controls import Controls
+from services.settings import PLAYER_IMAGE_LEFT, PLAYER_IMAGE_RIGHT
 
 
 class Player(pygame.sprite.Sprite):

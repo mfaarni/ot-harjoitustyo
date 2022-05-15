@@ -1,7 +1,7 @@
 from time import time
-from settings import SCREEN_WIDTH
-from controls import Controls
-from scores import Scores
+from services.settings import SCREEN_WIDTH
+from services.controls import Controls
+from database.scores import Scores
 
 
 class Level:
@@ -16,15 +16,12 @@ class Level:
         """
         self.world_shift = 0
         self.level_won = False
-        self.coin_counter = 0
-        self.death_counter = -1
-
+        self.coin_and_death_counter = [0, -1]
+        self.health = 3
         self.start_time = time()
-        self.highscore = Scores()
         self.controls = Controls()
         self.setup_level()
         self.name = player_name
-        self.health = 3
         self.inincibility_timer = 0
 
     def scroll_x(self, player_x, direction_x):
@@ -52,13 +49,16 @@ class Level:
     def setup_level(self):
         """alustaa tason pelin alussa sekä kuoltaessa, asettamalla arvot oletuksiksi
         """
-        self.death_counter += 1
-        self.coin_counter = 0
-        self.health = 3
+        self.coin_and_death_counter[1] += 1
+        self.coin_and_death_counter[0] = 1
+        self.get_hit(3)
         self.start_time = time()
 
     def get_hit(self, amount):
-        self.health += amount
+        if self.health>amount:
+            self.health += amount
+        else:
+            self.health=3
         self.inincibility_timer = 50
 
     def fall_to_death(self, player_y):
@@ -74,5 +74,6 @@ class Level:
         """pelaajan voittaessa tallennetaan tulos ja rekisteröidään voitto
         """
         self.level_won = True
-        self.highscore.save_score(
-            self.coin_counter, self.death_counter, self.name)
+        Scores().save_score(
+            self.coin_and_death_counter[0], self.coin_and_death_counter[1],\
+                self.start_time, self.name)

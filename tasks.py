@@ -6,7 +6,7 @@ from invoke import task
 @task
 
 def start(ctx):
-	ctx.run("python3 src/menu.py", pty=True)
+	ctx.run("python3 src/ui/menu.py", pty=True)
 	
 def build(ctx):
 	ctx.run("python3 src/initialize_database.py", pty=True)

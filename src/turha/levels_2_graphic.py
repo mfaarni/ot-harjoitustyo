@@ -1,11 +1,11 @@
 from time import sleep, time
 import pygame
-from tiles import PodiumTile, Tile, Backtile, Coins, Background
-from settings import TILE_SIZE, HEART_IMAGE
-from scores import Scores
-from player import Player
-from monster import Monster
-from levels_2 import Level
+from ui.tiles import PodiumTile, Tile, GrassTile, Backtile, Coins, Background
+from services.settings import TILE_SIZE, HEART_IMAGE, draw_timer
+from database.scores import Scores
+from ui.player import Player
+from ui.monster import Monster
+from services.levels_2 import Level
 
 
 class LevelGraphic:
@@ -58,20 +58,22 @@ class LevelGraphic:
                 y_coordinate = row_index * TILE_SIZE
                 if column == "X":
                     self.tiles.add(Tile((x_coordinate, y_coordinate)))
+                if column == "G":
+                    self.tiles.add(GrassTile((x_coordinate, y_coordinate)))
                 if column == "B":
                     self.backtile.add(Backtile((x_coordinate, y_coordinate)))
                 if column == "P":
                     self.player.add(Player((x_coordinate, y_coordinate)))
                 if column == "M":
-                    self.monsters.add(Monster((x_coordinate, y_coordinate-15)))
+                    self.monsters.add(Monster((x_coordinate, y_coordinate-18)))
                 if column == "Y":
                     self.backtile.add(Backtile((x_coordinate, y_coordinate)))
-                    self.coins.add(Coins((x_coordinate+15, y_coordinate+16)))
+                    self.coins.add(Coins((x_coordinate+30, y_coordinate+20)))
                 if column == "W":
                     self.podium.add(PodiumTile(
-                        (x_coordinate, y_coordinate), (TILE_SIZE/1.4)))
+                        (x_coordinate, y_coordinate)))
                 if column == "C":
-                    self.coins.add(Coins((x_coordinate+15, y_coordinate+16)))
+                    self.coins.add(Coins((x_coordinate+30, y_coordinate+20)))
         self.background.add(Background((-400, 0)))
 
     def draw_graphic(self):
@@ -93,7 +95,6 @@ class LevelGraphic:
             self.coins.draw(self.display_surface)
             self.player.update()
             self.player.draw(self.display_surface)
-
             self.horizontal_movement_collision()
             self.vertical_movement_collision()
             self.fall_to_death_graphic()
@@ -101,6 +102,7 @@ class LevelGraphic:
                                       self.player.sprite.direction.x)
             self.draw_coin_counter()
             self.draw_health()
+            draw_timer(self.display_surface, self.level_logic.start_time)
         else:
             self.win_graphic()
             self.click()
@@ -131,7 +133,7 @@ class LevelGraphic:
 
         for coin_sprite in self.coins.sprites():
             if coin_sprite.rect.colliderect(player.rect):
-                self.level_logic.coin_counter += 1
+                self.level_logic.coin_and_death_counter[0] += 1
                 coin_sprite.kill()
 
     def vertical_movement_collision(self):
@@ -162,7 +164,7 @@ class LevelGraphic:
         """piirtää näytölle kolikkolaskurin
         """
         coin_font = pygame.font.Font("freesansbold.ttf", 40)
-        coin_str = "coins: "+str(self.level_logic.coin_counter)
+        coin_str = "coins: "+str(self.level_logic.coin_and_death_counter[0])
         coin_text = coin_font.render(coin_str, True, (255, 255, 255))
         self.display_surface.blit(coin_text, (150, 50))
 
@@ -190,9 +192,10 @@ class LevelGraphic:
         win_text_shadow = font.render("YOU WON!", True, (80, 170, 70))
         start_again_text = start_again_font.render(
             "START AGAIN", True, (255, 255, 255))
-        scores = self.level_logic.highscore.return_highscores()
+        scores_class = Scores()
+        scores=scores_class.return_highscores()
         if not self.time_write:
-            self.win_time = int(time() - self.level_logic.highscore.start_time)
+            self.win_time = int(time() - self.level_logic.start_time)
             self.time_write = True
         self.display_surface.fill((150, 150, 150))
         pygame.draw.rect(self.display_surface,
@@ -201,9 +204,9 @@ class LevelGraphic:
             (score_font.render("HIGHSCORES", True, (255, 255, 255))), (500, 180))
         self.display_surface.blit(
             (score_font.render("Your score: " +
-                               str(self.level_logic.highscore.score
-                                   -self.win_time*100+self.level_logic.coin_counter*100
-                                   -1000*self.level_logic.death_counter),
+                               str(scores_class.score
+                                   -self.win_time*100+self.level_logic.coin_and_death_counter[0]*100
+                                   -1000*self.level_logic.coin_and_death_counter[1]),
                                True, (255, 255, 255))), (500, 150))
         self.draw_scores(scores, score_font)
 
@@ -214,18 +217,26 @@ class LevelGraphic:
         self.display_surface.blit(start_again_text, (90, 490))
 
     def click(self):
+        """vastaa hiiren toiminnasta voittonäytöllä, jotta voi aloittaa pelin uudelleen
+        """
         mouse = pygame.mouse.get_pos()
         for event in pygame.event.get():
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if 60 <= mouse[0] <= 360 and 470 <= mouse[1] <= 545:
                     self.level_logic.level_won = False
-                    self.level_logic.death_counter = -1
+                    self.level_logic.coin_and_death_counter[1] = -1
                     self.level_logic.start_time = time()
                     self.level_logic.highscore = Scores()
                     self.setup_graphic()
                     self.level_logic.setup_level()
 
     def draw_scores(self, scores, score_font):
+        """piirtää pelin voittotilanteessa listan korkeimmista pisteistä
+
+        Args:
+            scores (list): lista tuloksista tuple-muodossa, sisältäen tuloksen ja pelaajan nimen. Saadaan Score-luokan kautta
+            score_font (Font): fontti, jolla tulokset piirretään näytölle
+        """
         spacing = 0
         nmbr = 0
         for score in scores:
