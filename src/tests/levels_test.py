@@ -1,9 +1,9 @@
 import unittest
-from levels_2 import Level
-from settings import SCREEN_WIDTH
+from services.levels_2 import Level
+from services.settings import SCREEN_WIDTH
 
 
-class Test_levels(unittest.TestCase):
+class TestLevels(unittest.TestCase):
     def setUp(self):
         self.level = Level("testi")
 

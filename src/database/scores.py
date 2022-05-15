@@ -31,7 +31,7 @@ class Scores:
         tämä näytetään pelin lopussa
 
         Returns:
-            _type_: _description_
+            all_scores(list): lista kymmenestä parhaasta tuloksesta
         """
         all_scores = self.user_repository.find_all()
         all_scores = sorted(all_scores, key=lambda x: int(x[1]))

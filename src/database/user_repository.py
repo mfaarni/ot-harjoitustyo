@@ -35,8 +35,7 @@ class UserRepository:
         Args:
             username: Käyttäjätunnus, jonka käyttäjä palautetaan.
         Returns:
-            Palauttaa User-olion, jos käyttäjätunnuksen omaava käyttäjä on tietokannassa.
-            Muussa tapauksessa None.
+            Palauttaa käyttäjätunnuksen nimen ja pisteet tuplena
         """
 
         cursor = self._connection.cursor()
@@ -77,6 +76,23 @@ class UserRepository:
                 "update users set score=? where username=?",
                 (score, username))
             self._connection.commit()
+
+    def delete_by_username(self, username):
+        """Poistaa käyttäjän käyttäjätunnuksen perusteella.
+        Args:
+            username: Käyttäjätunnus, jonka käyttäjä palautetaan.
+        Returns:
+            Palauttaa käyttäjätunnuksen nimen ja pisteet tuplena
+        """
+
+        cursor = self._connection.cursor()
+
+        cursor.execute(
+            "delete from users where username = ?",
+            (username,)
+        )
+        self._connection.commit()
+
 
     def delete_all(self):
         """Poistaa kaikki käyttäjät.

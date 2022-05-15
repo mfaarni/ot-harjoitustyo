@@ -1,6 +1,6 @@
 import unittest
-from controls import Controls
-from settings import SCREEN_HEIGHT, SCREEN_WIDTH
+from services.controls import Controls
+from services.settings import SCREEN_HEIGHT, SCREEN_WIDTH
 
 
 class TestMoving(unittest.TestCase):

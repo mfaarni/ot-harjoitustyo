@@ -1,7 +1,7 @@
 from time import sleep
 import pygame
 from services.settings import SCREEN_HEIGHT, SCREEN_WIDTH
-from services.game import run_game
+from game import run_game
 from database.database_connection import get_database_connection
 from database.user_repository import UserRepository
 
