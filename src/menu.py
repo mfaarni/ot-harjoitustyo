@@ -49,28 +49,28 @@ while True:
 
     SCREEN.fill((180, 230, 180))
 
-    if QUIT_BUTTON_WIDTH/2 <= MOUSE[0] <= QUIT_BUTTON_WIDTH/2+140\
-            and QUIT_BUTTON_HEIGHT/2 <= MOUSE[1] <= QUIT_BUTTON_HEIGHT/2+40:
+    if int(QUIT_BUTTON_WIDTH/2) <= MOUSE[0] <= int(QUIT_BUTTON_WIDTH/2)+140\
+            and int(QUIT_BUTTON_HEIGHT/2) <= MOUSE[1] <= int(QUIT_BUTTON_HEIGHT/2)+40:
         pygame.draw.rect(SCREEN, COLOR_LIGHT, [
-            QUIT_BUTTON_WIDTH/2, QUIT_BUTTON_HEIGHT/2, 140, 40])
+            int(QUIT_BUTTON_WIDTH/2), int(QUIT_BUTTON_HEIGHT/2), 140, 40])
 
     else:
         pygame.draw.rect(SCREEN, COLOR_DARK, [
-            QUIT_BUTTON_WIDTH/2, QUIT_BUTTON_HEIGHT/2, 140, 40])
+            int(QUIT_BUTTON_WIDTH/2), int(QUIT_BUTTON_HEIGHT/2), 140, 40])
 
     if START_BUTTON_WIDTH/2-80 <= MOUSE[0] <= START_BUTTON_WIDTH/2+220\
             and START_BUTTON_HEIGHT/2-20 <= MOUSE[1] <= START_BUTTON_HEIGHT/2+80:
         pygame.draw.rect(SCREEN, COLOR_LIGHT, [
-            START_BUTTON_WIDTH/2-80, START_BUTTON_HEIGHT/2-25, 300, 100])
+            int(START_BUTTON_WIDTH/2)-80, int(START_BUTTON_HEIGHT/2)-25, 300, 100])
 
     else:
         pygame.draw.rect(SCREEN, COLOR_DARK, [
-            START_BUTTON_WIDTH/2-80, START_BUTTON_HEIGHT/2-25, 300, 100])
+            int(START_BUTTON_WIDTH/2)-80, int(START_BUTTON_HEIGHT/2)-25, 300, 100])
 
     SCREEN.blit(TEXT_NAME, (200, 100))
     SCREEN.blit(TEXT_NAME_2, (500, 200))
-    SCREEN.blit(TEXT_QUIT, (QUIT_BUTTON_WIDTH/2+25, QUIT_BUTTON_HEIGHT/2+5))
-    SCREEN.blit(TEXT_START, (START_BUTTON_WIDTH /
-                             2-40, START_BUTTON_HEIGHT/2-10))
+    SCREEN.blit(TEXT_QUIT, (int(QUIT_BUTTON_WIDTH/2)+25, int(QUIT_BUTTON_HEIGHT/2)+5))
+    SCREEN.blit(TEXT_START, (int(START_BUTTON_WIDTH /
+                             2)-40, int(START_BUTTON_HEIGHT/2)-10))
 
     pygame.display.update()

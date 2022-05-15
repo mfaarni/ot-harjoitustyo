@@ -18,22 +18,22 @@ TILE_SIZE = 64
 SCREEN_WIDTH = 1200
 SCREEN_HEIGHT = len(LEVEL_MAP)*TILE_SIZE
 GOBLIN_IMAGE = pygame.transform.scale(
-    pygame.image.load("src/sprites/goblin.png"), (45, 80))
-BACKGROUND_IMAGE = pygame.image.load("src/sprites/background.png")
+    pygame.image.load("sprites/goblin.png"), (45, 80))
+BACKGROUND_IMAGE = pygame.image.load("sprites/background.png")
 TILE_IMAGE = pygame.transform.scale(
-    pygame.image.load("src/sprites/block.png"), (65, 65))
+    pygame.image.load("sprites/block.png"), (65, 65))
 GRASS_TILE_IMAGE = pygame.transform.scale(
-    pygame.image.load("src/sprites/block_grass.png"), (65, 65))
+    pygame.image.load("sprites/block_grass.png"), (65, 65))
 TROPHY_IMAGE = pygame.transform.scale(
-    pygame.image.load("src/sprites/trophy.png"), (65, 65))
+    pygame.image.load("sprites/trophy.png"), (65, 65))
 BACKTILE_IMAGE = pygame.transform.scale(
-    pygame.image.load("src/sprites/backtile.png"), (65, 65))
+    pygame.image.load("sprites/backtile.png"), (65, 65))
 PLAYER_IMAGE_RIGHT = pygame.transform.scale(
-    pygame.image.load("src/sprites/adventurer.png"), (25, 90))
+    pygame.image.load("sprites/adventurer.png"), (25, 90))
 PLAYER_IMAGE_LEFT = pygame.transform.scale(
-    pygame.image.load("src/sprites/adventurer_left.png"), (25, 90))
-HEART_IMAGE = pygame.image.load("src/sprites/heart.png")
-COIN_IMAGE = pygame.image.load("src/sprites/coin.png")
+    pygame.image.load("sprites/adventurer_left.png"), (25, 90))
+HEART_IMAGE = pygame.image.load("sprites/heart.png")
+COIN_IMAGE = pygame.image.load("sprites/coin.png")
 
 
 def draw_timer(screen, start_time):
