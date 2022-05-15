@@ -2,7 +2,10 @@
 
 ## Rakenne
 
-Ohjelman rakenteessa on itse pelin varsinainen koodi, sekä data ja spirtes-luokat. data-luokassa on tallennettuna pelin tulokset sql-tietokantaan, ja sprites-kansiossa ladattavat grafiikat
+Ohjelman rakenteessa on itse pelin varsinainen koodi, sekä data ja sprites-luokat. data-luokassa on tallennettuna pelin tulokset sql-tietokantaan, ja sprites-kansiossa ladattavat grafiikat
+
+Tiedostot ovat jaettu kolmeen kansioon: UI sisältää käyttöliittymään ja grafiikoihin liittyvät luokat, Services sovelluslogiikan, ja database tietokannan toimintaan ja muokkaamiseen liittyvät tiedostot.
+![rakenne](https://user-images.githubusercontent.com/102048170/168483699-cc213055-9347-422a-972a-3fd8ea31db83.png)
 
 ## Käyttöliittymä
 
@@ -24,6 +27,7 @@ Sovelluslogiikka sisältää useita luokkia, joista tärkeimmät ovat levels_2 s
 Pelissä pelaajan nimet sekä saavutetut tulokset tallennetaan SQLite-tietokantaan. Voittaessa tästä tietokannasta haetaan tulokset. tärkeitä ovat tiedostot database_connection, initialize_database sekä scores, jotka käsittelevät tietokantaa niin kirjoittamiseen kuin lukemiseen.
 ## Tiedostot
 SQLite-tietokanta Users tallennetaan kansion data tiedostoon database.db. Sinne tallenetaan pelaajan nimi sekä kunkin nimen paras saavutettu tulos. 
+Lisäksi kansiosta data löytyy tiedosto test_database.db, joka on databasea vastaava, testejä varten tehty tietokanta.
 
 
 ```mermaid
