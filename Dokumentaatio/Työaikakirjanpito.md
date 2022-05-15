@@ -14,7 +14,8 @@
 |26.4.|6h|Jaoteltu pelilogiikkaa omaan luokkaan, ja korjattu sen aiheuttamia ongelmia|
 |2.5.|8h|Highscores-lista muutettu sql-tietokantaan, ja se toimii nyt moitteetta|
 |3.5.|5h|Koodia opitmoitu ja korjattu pylint-virheitä|
-|15.5.|7h|Tekstuurien päivittämistä sekä koodin siivoamista|
-|Yht:|64h| |
+|14.5.|7h|Tekstuurien päivittämistä sekä koodin siivoamista|
+|15.5.|8h|Loppupalautuksen viimeistelyä, dokumentoinnin päivitystä yms|
+|Yht:|72h| |
 
 
